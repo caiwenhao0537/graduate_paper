@@ -122,6 +122,7 @@ other_patent_list_robot=patent_extract_ipc_dwpi(patent_datas_robot)
 other_patent_list_car=patent_extract_ipc(patent_datas_car)
 other_patent_list_swear=patent_extract_ipc(patent_datas_swear)
 
+#计算专利相似度
 result_robot=patent_similar_ipc_dwpi(DA_patent_list,other_patent_list_robot,0.4,0.3,0.3)
 result_car=patent_similar_ipc(DA_patent_list,other_patent_list_car)
 result_swear=patent_similar_ipc(DA_patent_list,other_patent_list_swear)
@@ -129,6 +130,7 @@ result_robot_dict=sorted(result_robot.items(),key=operator.itemgetter(1),reverse
 result_car_dict=sorted(result_car.items(),key=operator.itemgetter(1),reverse=True)
 result_swear_dict=sorted(result_swear.items(),key=operator.itemgetter(1),reverse=True)
 
+#保存相似度结果
 result_save(result_robot_dict,result_robot_file)
 result_save(result_car_dict,result_car_file)
 result_save(result_swear_dict,result_swear_file)
