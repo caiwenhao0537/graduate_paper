@@ -3,15 +3,16 @@ import random
 import numpy as np
 import pandas as pd
 from pandas import DataFrame,Series
-a=np.random.randint(0,1,size=[8923,49])
-list_cs=list(range(0,49))
+a=np.random.randint(0,1,size=[1463,96])
+list_cs=list(range(0,96))
 
 for i in range(1,len(a)):
-    selected_list = random.sample(list_cs, 2)
+    b=np.random.randint(2,5)
+    selected_list = random.sample(list_cs, b)
     for j in selected_list:
         a[i][j]=1
 #print(a[1][1])
-np.savetxt('D:\pydata\mypydata\paper_data\data_robot\\rand_ma.csv',a,delimiter=',')
+np.savetxt('D:\pydata\mypydata\paper_data\data1212\\transfer_model\\rand_ma.csv',a,delimiter=',')
 # str1="it mostly is you that make the things bad. it is Jim who saved me. it like me .So I think you should apologize to Bob"
 # pattern="^it.*is.*that.*\."
 # str2=re.findall(pattern,str1)
