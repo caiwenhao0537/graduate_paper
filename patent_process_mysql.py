@@ -7,12 +7,14 @@ from pandas import Series,DataFrame
 import nltk
 from nltk.tokenize import word_tokenize
 #获取停用词表
-stop_words=open('D:\pydata\mypydata\paper_data\stop_words.txt','r')
+#stop_words=open('D:\pydata\mypydata\paper_data\stop_words.txt','r')
+stop_words=open('D:\pydata\mypydata\paper_data\stop_words_2.txt','r')
 stop_words_list=[]
 for line in stop_words.readlines():
     stop_words_list.append(line.strip())
 #文本保存
-file_data=open('D:\pydata\mypydata\paper_data\data_1127\smart_wear.txt','a',encoding='utf-8')
+#file_data=open('D:\pydata\mypydata\paper_data\data_1127\smart_wear.txt','a',encoding='utf-8')
+file_data=open('D:\pydata\mypydata\paper_data\data0227\smart_wear_0302.txt','a',encoding='utf-8')
 #去停用词函数
 def data_process_stop_words(stop_words,patent_text):
     patent_data_process=''
@@ -51,18 +53,20 @@ cursor=db.cursor()
 def insert_data(i,i_2):
     number_tag=0
     result_extract=[]
-    sql_select_text='select patent_text  from patent_data_car limit %d,%d'%(i,i_2)
+    sql_select_text='select * from patent_data_swear limit %d,%d'%(i,i_2)
     cursor.execute(sql_select_text)
     result_text=cursor.fetchall()
     for patent_text_dict in result_text:
         number_tag+=1
         dict_text=data_extract(patent_text_dict)
         #result_extract.append(dict_text)
+        file_data.write(patent_text_dict['patent_num'])
+        file_data.write(' ')
         file_data.write(dict_text)
         file_data.write('\n')
         print('已处理%d条专利'%number_tag)
     #return result_extract
-insert_data(43521,5000)
+insert_data(5296,6670)
 # sql_select_text = 'select patent_text  from patent_data_swear limit %d,%d' % (1, 4)
 # cursor.execute(sql_select_text)
 # result_text = cursor.fetchall()

@@ -7,18 +7,20 @@ parameter_dict={1:'移动物体的重量',2:'静止物体的重量',3:'移动物
 #工程参数代表性单词
 parameter_dict_list=[[],[],[],[],[],[],[],['space','size','volume','bulk','cubage'],['shape','form','appearance','outline','adumbration','lineament'],[['number','component'],['quantity','component'],['quantity','material']],[],[],[['durability','static'],['work','well','long'],['work','well','still']],[],[],[],['energy',['energy','consume','static']],['rate','power',['volume','power'],['internal','power'],['rate','work']],['pressure','stress','press','extrusion',['compressive','stress'],['extrusion','pressure']],[],['structural','structure','hyperstability','stability',['structural','stability']],[],['brightness','luminance','lighteness','light',['light','intensity']],['operating','operate','efficiency','efficient',['operat','efficiency']],['waste',['material','waste'],['solid','waste'],['liquid','waste']],[['time','waste'],['time','loss']],[['power','waste'],['waste','electricit']],[['retrieval','information'],'location',['determine','cause'],['know','status']],['noise','sound','strepitus'],[],[],['adapt',['wide','condition'],['variety','condition']],['compatibility','compatible','unite','associate','connect'],['comfort','convenient','convenience'],['reliability','dependability','reliable'],['repair','mend','overhaul','revamp'],['safe','safety','security','theft'],['injure','damage','breakdown'],['beautiful','artistic','appearance'],[],[['difficulty','assembly'],'install','build',['complexity','assembly']],[['accuracy','manufacturet']],['automatic','automation','automate'],[['additional','difficulty'],['additional','cost'],['production','cost'],['time','consume'],'expensive','prohibitive'],['complexity','complex','complicated','precision','precise'],[['complexity','control'],['difficulty','control']],['detect','identify','measure','measurement','survey','gauge','meter',['difficulty','detect'],['complexity','measure']],[['measurement','acuuracy'],['accuracy','survey']]]
 
+#获取单词空间向量
 def word_vector_get(word,model):
     #model=g.Doc2Vec.load(model_dir)
     word_vector=model[word].tolist()
     return word_vector
 
+#获取短语空间向量
 def vector_merge(vector_list):
     vector_merge_1=np.array([0*200])
     for vector in vector_list:
         vector_merge_1=vector_merge_1+vector
     vector_merged=[x*(1/len(vector_list)) for x in vector_merge_1]
     return vector_merged
-
+#计算两空间向量的余弦相似度
 def cos(vector1,vector2):
     dot_product = 0.0
     normA = 0.0
