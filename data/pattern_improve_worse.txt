@@ -1,0 +1,61 @@
+﻿(\s|[,.?])(reduc.*?)\s
+(\s|[,.?])(stength.*?)\s
+(\s|[,.?])(inceas.*?)\s
+(\s|[,.?])(impov.*?)\s
+(\s|[,.?])(enhanc.*?)\s
+(\s|[,.?])(well.*?)\s
+(\s|[,.?])(cant wok.*?)\s
+(\s|[,.?])(loss.*?)\s
+(\s|[,.?])(difficult.*?)\s
+(\s|[,.?])(not suited to.*?)\s
+(\s|[,.?])(favoabl.*?)\s
+(\s|[,.?])(easy.*?)\s
+(\s|[,.?])(weak.*?)\s
+(\s|[,.?])(adapt.*?)\s
+(\s|[,.?])(assist in.*?)\s
+(\s|[,.?])(had.*?)\s
+(\s|[,.?])(facilitat.*?)\s
+(\s|[,.?])(make against.*?)\s
+(\s|[,.?])(contol.*?)\s
+(\s|[,.?])(sav.*?)\s
+(\s|[,.?])(simpl.*?)\s
+(\s|[,.?])(attenuat.*?)\s
+(\s|[,.?])(cut.*?)\s
+(\s|[,.?])(deceas.*?)\s
+(\s|[,.?])(estain.*?)\s
+(\s|[,.?])(toubl.*?)\s
+(\s|[,.?])(conduciv.*?)\s
+(\s|[,.?])(disadvantag.*?)\s
+(\s|[,.?])(biefness.*?)\s
+(\s|[,.?])(destoy.*?)\s
+(\s|[,.?])(cut down.*?)\s
+(\s|[,.?])(bate.*?)\s
+(\s|[,.?])(attenuate.*?)\s
+(\s|[,.?])(count agaist.*?)\s
+(\s|[,.?])(go against.*?)\s
+(\s|[,.?])(complicat.*?)\s
+(\s|[,.?])(abatement.*?)\s
+(\s|[,.?])(beakdown.*?)\s
+(\s|[,.?])(etench.*?)\s
+(\s|[,.?])(beak.*?)\s
+(\s|[,.?])(suit.*?)\s
+(\s|[,.?])(convenient.*?)\s
+(\s|[,.?])(fit.*?)\s
+(\s|[,.?])(cut down.*?)\s
+(\s|[,.?])(ais.*?)\s
+(\s|[,.?])(potect.*?)\s
+(\s|[,.?])(pass.*?)\s
+(\s|[,.?])(pomot.*?)\s
+(\s|[,.?])(pedigest.*?)\s
+(\s|[,.?])(compess.*?)\s
+(\s|[,.?])(handy.*?)\s
+(\s|[,.?])(big.*?)\s
+(\s|[,.?])(boost.*?)\s
+(\s|[,.?])(wok bette.*?)\s
+(\s|[,.?])(high.*?)\s
+(\s|[,.?])(condens.*?)\s
+(\s|[,.?])(pevent.*?)\s
+(\s|[,.?])(height.*?)\s
+(\s|[,.?])(boost.*?)\s
+(\s|[,.?])(geat.*?)\s
+(\s|[,.?])(secu.*?)\s

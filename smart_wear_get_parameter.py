@@ -130,15 +130,15 @@ def patent_parameter_extract(patent_sentence_list,parameter_dict_list):
         sentence_parameter_list=[]
         sentence_parameter_attribute_list=[]
         sentence_words_list=sentence.split()
-        print(sentence_words_list)
-        print(len(sentence_words_list))
         for word in sentence_words_list:
             word_parameter=words_similarity(word,parameter_dict_list,0.8)
             if len(word_parameter)>0:
-                sentence_parameter_list.append(word_parameter)
-        patent_parameter_list.append(sentence_parameter_list)
-        sentence_parameter_attribute_list.append(parameter_attribute_extract(sentence,pattern_attribute_list))
-        patent_parameter_attribute_list.append(sentence_parameter_attribute_list)
+                for parameter in word_parameter:
+                    sentence_parameter_list.append(parameter)
+        patent_parameter_list.append(list(set(sentence_parameter_list)))
+        for parameter_attribute in parameter_attribute_extract(sentence,pattern_attribute_list):
+            sentence_parameter_attribute_list.append(parameter_attribute)
+        patent_parameter_attribute_list.append(list(set(sentence_parameter_attribute_list)))
     return patent_parameter_list,patent_parameter_attribute_list
 
 
@@ -153,7 +153,7 @@ def patent_parameter_extract(patent_sentence_list,parameter_dict_list):
 #读取专利文本
 data=pd.read_excel('D:\pydata\mypydata\paper_data\data0227\smart_wear_0302.xlsx')
 patent_dict={}
-for i in range(1,2):
+for i in range(1,3):
     patent_list=[]
     patent_list3=[]
     patent_list2=[]

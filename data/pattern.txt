@@ -1,0 +1,62 @@
+﻿.*reduc.*
+.*stength.*
+.*inceas.*
+.*impov.*
+.*enhanc.*
+.*well.*
+.*cant wok.*
+.*loss.*
+.*difficult.*
+.*not suited to.*
+.*favoabl.*
+.*easy.*
+.*weak.*
+.*adapt.*
+.*assist in.*
+.*had.*
+.*facilitat.*
+.*make against.*
+.*contol.*
+.*sav.*
+.*simpl.*
+.*attenuat.*
+.*cut.*
+.*deceas.*
+.*estain.*
+.*toubl.*
+.*conduciv.*
+.*disadvantag.*
+.*biefness.*
+.*destoy.*
+.*cut down.*
+.*bate.*
+.*attenuate.*
+.*count agaist.*
+.*go against.* 
+.*complicat.*
+.*abatement.*
+.*beakdown.*
+.*etench.*
+.*beak.*
+.*suit.*
+.*is.*
+.*convenient.*
+.*fit.*
+.*cut down.* 
+.*ais.* 
+.*potect.*
+.*pass.*
+.*pomot.*
+.*pedigest.*
+.*compess.*
+.*handy.*
+.*big.*
+.*boost.*
+.*wok bette.*
+.*high.*
+.*condens.*
+.*pevent.*
+.*height.*
+.*boost.* 
+.*geat.*
+.*secu.*
