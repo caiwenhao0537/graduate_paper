@@ -39,9 +39,30 @@ def parameter_and_attribute_dict(attibute_data):#获取工程参数及其对应�
         parameter_num+=1
     return parameter_attribute_dit
 result_dict=parameter_and_attribute_dict(parameter_attribute_words_data)
+#参数调整
+def parameter_attribute_change(parameter_result_list):
+    if parameter_result_list is None:
+        return []
+    else:
+        attribute_list=[]
+        result_list=[]
+        for parameter_attribute in parameter_result_list:
+            attribute_list.append(parameter_attribute[len(parameter_attribute)-2:])
+        if len(list(set(attribute_list)))==1:
+            for parameter_attribute in parameter_result_list[:len(parameter_result_list) - 1]:
+                result_list.append(parameter_attribute)
+            if list(set(attribute_list))[0]=='恶化':
+                result1=parameter_result_list[-1]
+                result2=str(result1[:len(result1)-2]) + '改善'
+                result_list.append(result2)
+            if list(set(attribute_list))[0]=='改善':
+                result1=parameter_result_list[-1]
+                result2=str(result1[:len(result1)-2]) + '恶化'
+                result_list.append(result2)
+        return result_list
 #判断参数的改善或恶化情况
 def parameter_attribute_judge(parameter_list,parameter_attribute_list):
-    while len(parameter_list) and len(parameter_attribute_list):
+    if len(parameter_list) and len(parameter_attribute_list):
         result=[]
         attribute_word_list=[]
         for attribute_word in parameter_attribute_list:
@@ -175,6 +196,8 @@ def parameter_attribute_extract(sentence,pattern_list):
 def patent_parameter_extract(patent_sentence_list,parameter_dict_list):
     patent_parameter_list=[]
     patent_parameter_attribute_list=[]
+    parameter_and_attribute_result_processed=[]
+    parameter_and_attribute_result_processed2 = []
     for sentence in patent_sentence_list:
         sentence_parameter_list=[]
         sentence_parameter_attribute_list=[]
@@ -189,10 +212,12 @@ def patent_parameter_extract(patent_sentence_list,parameter_dict_list):
             sentence_parameter_attribute_list.append(parameter_attribute)
         patent_parameter_attribute_list.append(list(set(sentence_parameter_attribute_list)))
         parameter_and_attribute_result=parameter_attribute_judge(list(set(sentence_parameter_list)),list(set(sentence_parameter_attribute_list)))
-        #print(patent_parameter_list)
-        #print(patent_parameter_attribute_list)
-        print(parameter_and_attribute_result)
-    return patent_parameter_list,patent_parameter_attribute_list,parameter_and_attribute_result
+        parameter_and_attribute_result_processed.append(parameter_attribute_change(parameter_and_attribute_result))
+    print(parameter_and_attribute_result_processed)
+    for words_list in parameter_and_attribute_result_processed:
+        for words in words_list:
+            parameter_and_attribute_result_processed2.append(words)
+    return patent_parameter_list,patent_parameter_attribute_list,parameter_and_attribute_result_processed2
 
 
 
@@ -205,20 +230,24 @@ def patent_parameter_extract(patent_sentence_list,parameter_dict_list):
 # word_vector_get(word_list_smart_wear,model_smart_wear,output_smart_wear)
 #读取专利文本
 data=pd.read_excel('D:\pydata\mypydata\paper_data\data0227\smart_wear_0302.xlsx')
-patent_dict={}
-for i in range(1,3):
-    patent_list=[]
-    patent_list3=[]
-    patent_list2=[]
-    patent_list.append(data.irow(i)['专利号'])
-    sentence_list=sentence_extract(data.irow(i)['专利文本'],pattern_list)
-    if len(sentence_list)>0:
-        result=patent_parameter_extract(sentence_list,parameter_dict_list)
-        patent_list3.append(result[0])
-        patent_list3.append(result[1])
-    patent_list.append(patent_list3)
-    patent_list2.append(patent_list)
-    #print(patent_list2)
-    patent_dict.update(dict(patent_list2))
-    print('已处理%d条专利'%i)
-#print(patent_dict)
+
+def patent_parameter_and_attribute_extract(min_row,max_row,patent_data):
+    patent_dict={}
+    for i in range(min_row,max_row):
+        patent_list=[]
+        patent_list3=[]
+        patent_list2=[]
+        patent_list.append(patent_data.irow(i)['专利号'])
+        sentence_list=sentence_extract(data.irow(i)['专利文本'],pattern_list)
+        if len(sentence_list)>0:
+            result=patent_parameter_extract(sentence_list,parameter_dict_list)
+            # patent_list3.append(result[0])
+            # patent_list3.append(result[1])
+            patent_list3.append(result[2])
+        patent_list.append(patent_list3)
+        patent_list2.append(patent_list)
+        patent_dict.update(dict(patent_list2))
+        print('已处理%d条专利'%i)
+    return patent_dict
+
+print(patent_parameter_and_attribute_extract(1,5,data))

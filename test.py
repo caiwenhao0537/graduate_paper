@@ -13,48 +13,32 @@ parameter_dict=['移动物体的重量','静止物体的重量','移动物体的
 
 data=open('D:\pydata\mypydata\paper_data\data0227\parameter_improve_worse.txt','r',encoding='utf-8')
 
-def parameter_and_attribute_dict(attibute_data):
-    parameter_attribute_dit = {}
-    parameter_num = 0
-    for line in attibute_data:
-        parameter_attribute_list=[]
-        parameter_and_attribute_list=[]
-        list2=[]
-        for words in line.strip().split('&'):
-            parameter_attribute_list.append(words.split())
-        parameter_and_attribute_list.append(parameter_dict[parameter_num])
-        parameter_and_attribute_list.append(parameter_attribute_list)
-        list2.append(parameter_and_attribute_list)
-        parameter_attribute_dit.update(dict(list2))
-        parameter_num+=1
-    return parameter_attribute_dit
+list_result=['静止物体的体积恶化','形状恶化']
+list_result2=['移动物体的重量改善','静止物体的重量改善','移动物体的长度改善','静止物体的长度改善','移动物体的面积改善']
+def parameter_attribute_change(parameter_result_list):
+    attribute_list=[]
+    result_list=[]
+    for parameter_attribute in parameter_result_list:
+        attribute_list.append(parameter_attribute[len(parameter_attribute)-2:])
+    if len(list(set(attribute_list)))==1:
+        for parameter_attribute in parameter_result_list[:len(parameter_result_list) - 1]:
+            result_list.append(parameter_attribute)
+        if list(set(attribute_list))[0]=='恶化':
+            result1=parameter_result_list[-1]
+            result2=str(result1[:len(result1)-2]) + '改善'
+            result_list.append(result2)
+        if list(set(attribute_list))[0]=='改善':
+            result1=parameter_result_list[-1]
+            result2=str(result1[:len(result1)-2]) + '恶化'
+            result_list.append(result2)
+    return result_list
 
-result_dict=parameter_and_attribute_dict(data)
-attribute_result_list=['改善','恶化']
-parameter_list=['安全性','装置的复杂性']
-parameter_attribute_list=['enhance']
-def parameter_attribute_judge(parameter_list,parameter_attribute_list):
-    result=[]
-    attribute_word_list=[]
-    for attribute_word in parameter_attribute_list:
-        attribute_word_list.append(lem.lemmatize(attribute_word,"v"))
-    for parameter in parameter_list:
-        parameter_improve_word_list=[]
-        parameter_worse_word_list=[]
-        for parameter_attribute_improve_word in result_dict[parameter][0]:
-            parameter_improve_word_list.append(lem.lemmatize(parameter_attribute_improve_word,"v"))
-        for parameter_attribute_worse_word in result_dict[parameter][1]:
-            parameter_worse_word_list.append(lem.lemmatize(parameter_attribute_worse_word,"v"))
-        for word in attribute_word_list:
-            if word in parameter_improve_word_list:
-                result.append('%s改善'%parameter)
-            elif word in parameter_worse_word_list:
-                    result.append('%s恶化'%parameter)
-        if len(result)==0:
-            attribute_result=attribute_result_list[random.randint(0,1)]
-            result.append('%s%s'%(parameter,attribute_result))
-    return result
-print(parameter_attribute_judge(parameter_list,parameter_attribute_list))
+print(parameter_attribute_change(list_result2))
+
+
+
+parameter_attribute_change(list_result2)
+
 
 
 
